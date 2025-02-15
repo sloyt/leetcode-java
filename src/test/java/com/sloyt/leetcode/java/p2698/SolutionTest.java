@@ -11,6 +11,7 @@ public class SolutionTest extends TestCase implements TestSolution {
         assertEquals(182, solution.punishmentNumber(10));
         assertEquals(1478, solution.punishmentNumber(37));
         assertEquals(41334, solution.punishmentNumber(166));
+        assertEquals(1478, solution.punishmentNumber(37));
         assertEquals(2725885, solution.punishmentNumber(768));
     }
 }

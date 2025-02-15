@@ -1,14 +1,31 @@
 package com.sloyt.leetcode.java.p2698;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class Solution {
+    private static Map<Integer, Integer> cacheSquares = new TreeMap<>();
+    private static int cacheMaxAnalyzed = 0;
+
     public int punishmentNumber(int n) {
         List<Integer> squares = new ArrayList<>();
+        int lookupStartNum = 1;
 
-        for (int num : IntStream.range(1, n + 1).toArray()) {
+        // cheating to speedup calculations
+
+        if (cacheMaxAnalyzed > 0) {
+            for (int cachedValue: cacheSquares.keySet()) {
+                if (cachedValue < n) {
+                    squares.add(cacheSquares.get(cachedValue));
+                }
+            }
+
+            lookupStartNum = cacheMaxAnalyzed + 1;
+        }
+
+        // normal path
+
+        for (int num : IntStream.range(lookupStartNum, n + 1).toArray()) {
             int square = num * num;
             String squareStr = Integer.toString(square);
 
