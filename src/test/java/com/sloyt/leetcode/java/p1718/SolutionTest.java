@@ -31,9 +31,9 @@ public class SolutionTest extends TestCase implements TestSolution {
                 solution.constructDistancedSequence(15)
         ));
 
-//        assertTrue(Arrays.equals(
-//                new int[]{3, 1, 2, 3, 2},
-//                solution.constructDistancedSequence(20)
-//        ));
+        assertTrue(Arrays.equals(
+                new int[]{3, 1, 2, 3, 2},
+                solution.constructDistancedSequence(20)
+        ));
     }
 }
