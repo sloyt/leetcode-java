@@ -2,25 +2,17 @@ package com.sloyt.leetcode.java.p1749;
 
 public class Solution {
     public int maxAbsoluteSum(int[] nums) {
-        int maxPos = 0;
-        int maxNeg = 0;
-        int sum;
+        int sumMax = 0;
+        int sumMin = 0;
+        int max = 0;
 
-        for (int i = 0; i < nums.length; i++) {
-            sum = 0;
+        for (int n : nums) {
+            sumMax = Math.max(sumMax + n, n);
+            sumMin = Math.min(sumMin + n, n);
 
-            int j = i;
-
-            while (j < nums.length) {
-                sum += nums[j];
-
-                if (sum > maxPos) maxPos = sum;
-                if (sum < maxNeg) maxNeg = sum;
-
-                j++;
-            }
+            max = Math.max(max, Math.max(Math.abs(sumMax), Math.abs(sumMin)));
         }
 
-        return (maxPos > -maxNeg) ? maxPos : -maxNeg;
+        return max;
     }
 }
